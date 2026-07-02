@@ -1,0 +1,38 @@
+//where is the LED connected?
+//blue pin user LED is at PC13.
+//LED port C
+//LED pin 13
+
+#define PERIPH_BASE 		(0x40000000UL)
+#define APB2PERIPH_OFFSET	(0x00010000UL)
+// derived from PERIPH_BASE and APB2PERIPH_OFFSET
+#define APB2PERIPH_BASE 	(PERIPH_BASE + APB2PERIPH_OFFSET)
+//#define GPIOC_OFFSET 		(0x00001000UL)
+// derived from APB2PERIPH_BASE and GPIOC_OFFSET
+//#define GPIOC_BASE 			(APB2PERIPH_BASE + GPIOC_OFFSET) // 0x40011000
+#define GPIOC_BASE			(0x40011000UL)
+
+////RCC - reset and clock control
+//#define RCC_OFFSET			(0x00011000UL)
+// derived from PERIPH_BASE and RCC_OFFSET
+//#define RCC_BASE 			(APB2PERIPH_BASE + RCC_OFFSET) // 0x40021000
+#define RCC_BASE 			(0x40021000UL)
+
+// APB2 enable register offset
+#define APB2EN_R_OFFSET		(0x18UL)
+#define RCC_APB2EN_R		(*(volatile unsigned int *)(RCC_BASE + APB2EN_R_OFFSET))
+// enable APB2 clock to enable GPIOC by setting bit 4 of RCC_APB2EN_R register
+#define GPIOCEN 			(1U<<4)
+
+// GPIOC configuration register
+#define GPIOx_CRH_R_OFFSET	(0x04UL)
+#define GPIOC_MODE_R 		(*(volatile unsigned int *)(GPIOC_BASE + GPIOx_CRH_R_OFFSET))
+
+
+#define OD_R_OFFSET 		(0x0CUL)
+#define GPIOC_OD_R			(*(volatile unsigned int *)(GPIOC_BASE + OD_R_OFFSET))
+// PC13 data register
+
+#define PIN5 				(1U<<5)
+#define LED_PIN				(PIN5)
+

@@ -1,0 +1,1 @@
+2026-07-01 13:20:35,840 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to RegisterClient: GDBus.Error:org.gnome.SessionManager.NotInRunning: Unable to register client

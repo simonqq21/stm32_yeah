@@ -1,0 +1,23 @@
+22:13:27 **** Incremental Build of configuration Debug for project 1_blink_led_struct ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "1_blink_led_struct.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/simonque/Documents/code/stm32_yeah/1_blink_led_struct/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_blink_led_struct.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_blink_led_struct.elf
+ 
+arm-none-eabi-size  1_blink_led_struct.elf 
+arm-none-eabi-objdump -h -S 1_blink_led_struct.elf  > "1_blink_led_struct.list"
+arm-none-eabi-objcopy  -O ihex 1_blink_led_struct.elf  "1_blink_led_struct.hex"
+arm-none-eabi-objcopy  -O binary 1_blink_led_struct.elf  "1_blink_led_struct.bin"
+   text	   data	    bss	    dec	    hex	filename
+    668	      0	   1568	   2236	    8bc	1_blink_led_struct.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_blink_led_struct.hex
+Finished building: 1_blink_led_struct.list
+Finished building: 1_blink_led_struct.bin
+ 
+ 
+ 
+
+22:13:27 Build Finished. 0 errors, 0 warnings. (took 174ms)
+

@@ -1,0 +1,60 @@
+//where is the LED connected?
+//blue pill user LED is at PC13.
+//LED port C
+//LED pin 13
+
+#define PERIPH_BASE 		(0x40000000UL)
+#define APB2PERIPH_OFFSET	(0x00010000UL)
+// derived from PERIPH_BASE and APB2PERIPH_OFFSET
+#define APB2PERIPH_BASE 	(PERIPH_BASE + APB2PERIPH_OFFSET)
+//#define GPIOC_OFFSET 		(0x00001000UL)
+// derived from APB2PERIPH_BASE and GPIOC_OFFSET
+//#define GPIOC_BASE 			(APB2PERIPH_BASE + GPIOC_OFFSET) // 0x40011000
+#define GPIOC_BASE			(0x40011000UL)
+
+////RCC - reset and clock control
+//#define RCC_OFFSET			(0x00011000UL)
+// derived from PERIPH_BASE and RCC_OFFSET
+//#define RCC_BASE 			(APB2PERIPH_BASE + RCC_OFFSET) // 0x40021000
+#define RCC_BASE 			(0x40021000UL)
+
+// APB2 enable register offset
+#define APB2EN_R_OFFSET		(0x18UL)
+#define RCC_APB2EN_R		(*(volatile unsigned int *)(RCC_BASE + APB2EN_R_OFFSET))
+// enable APB2 clock to enable GPIOC by setting bit 4 of RCC_APB2EN_R register
+#define GPIOCEN 			(1U<<4)
+
+// GPIOC configuration register
+#define GPIOx_CRH_R_OFFSET	(0x04UL)
+#define GPIOC_MODE_R 		(*(volatile unsigned int *)(GPIOC_BASE + GPIOx_CRH_R_OFFSET))
+#define PIN13_MODE_0		(1U<<20)
+#define PIN13_MODE_1		(1U<<21)
+#define PIN13_CNF_0			(1U<<22)
+#define PIN13_CNF_1			(1U<<23)
+
+#define OD_R_OFFSET 		(0x0CUL)
+#define GPIOx_BSRR_OFFSET	(0x10UL)
+#define GPIOC_OD_R			(*(volatile unsigned int *)(GPIOC_BASE + OD_R_OFFSET))
+#define GPIOC_BSRR_R 		(*(volatile unsigned int *)(GPIOC_BASE + GPIOx_BSRR_OFFSET))
+// PC13 data register
+
+#define PIN13				(1U<<13)
+#define LED_PIN				(PIN13)
+
+int main(void) {
+/* 1. enable clock access to GPIOC */
+	RCC_APB2EN_R = GPIOCEN;
+/*	2. Set PC13 as output pin
+ * set PC13 CNF to 00 to set to output push-pull
+ * set PC13 MODE to 01 to set max speed to 10 MHz*/
+//	GPIOC_MODE_R &= ~PIN13_MODE_1;
+//	GPIOC_MODE_R &= ~PIN13_MODE_0;
+	GPIOC_MODE_R = PIN13_CNF_0;
+//	GPIOC_MODE_R &= ~PIN13_CNF_1;
+	while (1) {
+		/* 3. Set PC13 HIGH */
+		GPIOC_OD_R = LED_PIN;
+//		GPIOC_OD_R ^= LED_PIN;
+//		for (int i=0;i<500000;i++);
+	}
+}
