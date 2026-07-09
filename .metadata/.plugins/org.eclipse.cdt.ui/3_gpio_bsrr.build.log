@@ -1,6 +1,6 @@
-14:10:10 **** Incremental Build of configuration Debug for project 3_gpio_bsrr ****
+15:47:14 **** Incremental Build of configuration Debug for project 3_gpio_bsrr ****
 make -j12 all 
-make: Warning: File 'Startup/subdir.mk' has modification time 25919 s in the future
+make: Warning: File 'Startup/subdir.mk' has modification time 20095 s in the future
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103x6 -c -I../Inc -I/home/simonque/Documents/code/STM32Cube_FW_F1_V1.8.0/stm32f103/Device/ST/STM32F1xx/Include -I/home/simonque/Documents/code/STM32Cube_FW_F1_V1.8.0/stm32f103/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
 arm-none-eabi-gcc -o "3_gpio_bsrr.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/simonque/Documents/code/stm32_yeah/3_gpio_bsrr/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="3_gpio_bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: 3_gpio_bsrr.elf
@@ -9,15 +9,15 @@ arm-none-eabi-size  3_gpio_bsrr.elf
 arm-none-eabi-objdump -h -S 3_gpio_bsrr.elf  > "3_gpio_bsrr.list"
 arm-none-eabi-objcopy  -O ihex 3_gpio_bsrr.elf  "3_gpio_bsrr.hex"
    text	   data	    bss	    dec	    hex	filename
-    704	      0	   1568	   2272	    8e0	3_gpio_bsrr.elf
+    732	      0	   1568	   2300	    8fc	3_gpio_bsrr.elf
 Finished building: default.size.stdout
  
-arm-none-eabi-objdump: Warning: source file /home/simonque/Documents/code/stm32_yeah/2_gpio_output/Debug/../Startup/startup_stm32f103c8tx.s is more recent than object file
 Finished building: 3_gpio_bsrr.hex
+arm-none-eabi-objdump: Warning: source file /home/simonque/Documents/code/stm32_yeah/2_gpio_output/Debug/../Startup/startup_stm32f103c8tx.s is more recent than object file
  
 Finished building: 3_gpio_bsrr.list
  
 make: warning:  Clock skew detected.  Your build may be incomplete.
 
-14:10:10 Build Finished. 0 errors, 0 warnings. (took 132ms)
+15:47:14 Build Finished. 0 errors, 0 warnings. (took 177ms)
 

@@ -42,11 +42,23 @@ int main(void)
 	GPIOC->CRH |= GPIO_CRH_MODE13_0;
 	GPIOC->CRH &= ~GPIO_CRH_CNF13_1;
 	GPIOC->CRH &= ~GPIO_CRH_CNF13_0;
+	/* Set PA5 as pulled up input  pin
+	 * set CNF to 10
+	 * set MODE to 00
+	 * set ODR to 1
+	 * */
+	GPIOA->CRL |= GPIO_CRL_CNF5_1;
+	GPIOA->CRL &= ~GPIO_CRL_CNF5_0;
+	GPIOA->CRL &= ~GPIO_CRL_MODE5_1;
+	GPIOA->CRL &= ~GPIO_CRL_MODE5_0;
+	GPIOA->ODR |= GPIO_ODR_ODR5;
 
     while (1) {
-    	GPIOC->BSRR |= GPIO_BSRR_BR13;
-     	for (int i=0;i<50000;i++);
-    	GPIOC->BSRR |= GPIO_BSRR_BS13;
-    	for (int i=0;i<600000;i++);
+    	GPIOC->ODR &= ~LED_PIN;
+    	     	for (int i=0;i<50000;i++);
+    	    	GPIOC->ODR |= LED_PIN;
+    	    	for (int i=0;i<300000;i++);
+
+
     }
 }
