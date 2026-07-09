@@ -812,3 +812,6 @@ org.eclipse.cdt.managedbuilder.core.BuildException: No toolchain option in toolc
 
 !ENTRY org.eclipse.cdt.core 1 0 2026-07-09 21:24:57.586
 !MESSAGE Indexed '2_gpio_output' (3 sources, 61 headers) in 0.51 sec: 2,663 declarations; 4,299 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.029%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-07-09 14:01:00.047
+!MESSAGE Indexed '3_gpio_bsrr' (4 sources, 61 headers) in 0.445 sec: 2,669 declarations; 4,431 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.028%)

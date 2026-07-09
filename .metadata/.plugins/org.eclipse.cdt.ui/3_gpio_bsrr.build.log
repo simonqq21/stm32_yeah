@@ -18,3 +18,6 @@ Finished building: 3_gpio_bsrr.hex
 Finished building: 3_gpio_bsrr.list
  
 make: warning:  Clock skew detected.  Your build may be incomplete.
+
+14:10:10 Build Finished. 0 errors, 0 warnings. (took 132ms)
+
